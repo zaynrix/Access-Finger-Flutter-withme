@@ -1,37 +1,44 @@
 import 'package:accesswithfinger/serviceLocator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 
 import 'localAuthinticationsService.dart';
 
 void main() {
   setupLocator();
-  runApp(ProviderScope(
-    child: MyApp(),
-  ));
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => LocalAuthenticationService(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends ConsumerWidget {
+class MyHomePage extends StatelessWidget {
   final LocalAuthenticationService _localAuth =
       sl<LocalAuthenticationService>();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(counterProvider);
-
+  Widget build(
+    BuildContext context,
+  ) {
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
@@ -40,19 +47,21 @@ class MyHomePage extends ConsumerWidget {
         ),
         title: const Text('Local Authentication'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text("This data locator ${_localAuth.isAuthenticated}"),
-          ),
-          Center(
-            child: TextButton(
-              onPressed: _localAuth.authenticate,
-              child: Text('authenticate ${count.toString()}'),
+      body: Consumer<LocalAuthenticationService>(
+        builder: (context, value, child) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text("This data locator ${_localAuth.isAuthenticated}"),
             ),
-          ),
-        ],
+            Center(
+              child: TextButton(
+                onPressed: _localAuth.authenticate,
+                child: Text('authenticate ${value.isAuthenticated}'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
