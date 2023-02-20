@@ -21,4 +21,9 @@ class LocalAuthenticationService extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future<void> remove() async {
+    isAuthenticated = false;
+    notifyListeners();
+  }
 }

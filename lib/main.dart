@@ -60,6 +60,12 @@ class MyHomePage extends StatelessWidget {
                 child: Text('authenticate ${_localAuth.isAuthenticated}'),
               ),
             ),
+            Center(
+              child: TextButton(
+                onPressed: _localAuth.remove,
+                child: const Text('Remove'),
+              ),
+            ),
           ],
         ),
       ),
