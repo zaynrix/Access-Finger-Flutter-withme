@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => LocalAuthenticationService(),
+        ChangeNotifierProvider.value(
+          value: sl<LocalAuthenticationService>(),
         )
       ],
       child: MaterialApp(
@@ -47,8 +47,8 @@ class MyHomePage extends StatelessWidget {
         ),
         title: const Text('Local Authentication'),
       ),
-      body: Consumer<LocalAuthenticationService>(
-        builder: (context, value, child) => Column(
+      body: Consumer(
+        builder: (context, LocalAuthenticationService value, child) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
@@ -57,7 +57,7 @@ class MyHomePage extends StatelessWidget {
             Center(
               child: TextButton(
                 onPressed: _localAuth.authenticate,
-                child: Text('authenticate ${value.isAuthenticated}'),
+                child: Text('authenticate ${_localAuth.isAuthenticated}'),
               ),
             ),
           ],
