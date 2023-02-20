@@ -1,11 +1,14 @@
 import 'package:accesswithfinger/serviceLocator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'localAuthinticationsService.dart';
 
 void main() {
   setupLocator();
-  runApp(MyApp());
+  runApp(ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,17 +24,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends ConsumerWidget {
   final LocalAuthenticationService _localAuth =
       sl<LocalAuthenticationService>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(counterProvider);
+
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Center(
             child: TextButton(
               onPressed: _localAuth.authenticate,
-              child: const Text('authenticate'),
+              child: Text('authenticate ${count.toString()}'),
             ),
           ),
         ],

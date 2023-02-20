@@ -1,10 +1,17 @@
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:riverpod/riverpod.dart';
 
-class LocalAuthenticationService {
+final counterProvider = StateNotifierProvider((ref) {
+  return LocalAuthenticationService();
+});
+
+class LocalAuthenticationService extends StateNotifier {
   final _auth = LocalAuthentication();
 
   bool isAuthenticated = false;
+
+  LocalAuthenticationService() : super();
 
   Future<void> authenticate() async {
     try {
@@ -15,6 +22,7 @@ class LocalAuthenticationService {
           stickyAuth: true,
         ),
       );
+      this.state = true;
     } on PlatformException catch (e) {
       print(e);
     }
