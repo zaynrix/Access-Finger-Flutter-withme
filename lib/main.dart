@@ -8,11 +8,13 @@ import 'localAuthinticationsService.dart';
 void main() {
   setupLocator();
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'Local Authentications',
+        debugShowCheckedModeBanner: false,
+        title: 'Touch ID Checker',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -47,10 +50,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
   Widget _submitButton() {
     return InkWell(
-      onTap: () {
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => LoginPage()));
-      },
+      onTap: () {},
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: 13),
@@ -59,15 +59,15 @@ class _WelcomePageState extends State<WelcomePage> {
             borderRadius: const BorderRadius.all(Radius.circular(5)),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                  color: const Color(0xffdf8e33).withAlpha(100),
+                  color: Colors.green.withAlpha(100),
                   offset: const Offset(2, 4),
                   blurRadius: 8,
                   spreadRadius: 2)
             ],
             color: Colors.white),
         child: const Text(
-          'Login',
-          style: TextStyle(fontSize: 20, color: Color(0xfff7892b)),
+          'First Checker',
+          style: TextStyle(fontSize: 20, color: Colors.black),
         ),
       ),
     );
@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
           border: Border.all(color: Colors.white, width: 2),
         ),
         child: const Text(
-          'Register now',
+          'Second Checker',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
@@ -98,7 +98,7 @@ class _WelcomePageState extends State<WelcomePage> {
         child: Column(
           children: <Widget>[
             const Text(
-              'Quick login with Touch ID',
+              'Touch ID',
               style: TextStyle(color: Colors.white, fontSize: 17),
             ),
             const SizedBox(
@@ -111,7 +111,7 @@ class _WelcomePageState extends State<WelcomePage> {
             InkWell(
               onTap: () => _localAuth.authenticate(context),
               child: const Text(
-                'Touch ID',
+                'Check Touch ID',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -127,20 +127,21 @@ class _WelcomePageState extends State<WelcomePage> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-          text: 'd',
+          text: 'Touch',
+          //Touch ID Checker
           style: GoogleFonts.portLligatSans(
-            textStyle: Theme.of(context).textTheme.headline1,
+            textStyle: Theme.of(context).textTheme.displayLarge,
             fontSize: 30,
             fontWeight: FontWeight.w700,
             color: Colors.white,
           ),
           children: const [
             TextSpan(
-              text: 'ev',
+              text: 'ID',
               style: TextStyle(color: Colors.black, fontSize: 30),
             ),
             TextSpan(
-              text: 'rnz',
+              text: 'Checker',
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
           ]),
@@ -166,7 +167,7 @@ class _WelcomePageState extends State<WelcomePage> {
               gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xfffbb448), Color(0xffe46b10)])),
+                  colors: [Colors.greenAccent, Colors.green])),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

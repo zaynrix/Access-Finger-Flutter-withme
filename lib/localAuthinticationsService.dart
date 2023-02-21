@@ -19,8 +19,10 @@ class LocalAuthenticationService extends ChangeNotifier {
         ),
       );
       notifyListeners();
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => DoneScreen()));
+      if (isAuthenticated == true) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DoneScreen()));
+      }
     } on PlatformException catch (e) {
       print(e);
     }

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "accesswithfinger" "\0"
+            VALUE "FileDescription", "Touch ID Checker" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "accesswithfinger" "\0"
+            VALUE "InternalName", "Touch ID Checker" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "accesswithfinger.exe" "\0"
-            VALUE "ProductName", "accesswithfinger" "\0"
+            VALUE "ProductName", "Touch ID Checker" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
