@@ -59,7 +59,7 @@ class _WelcomePageState extends State<WelcomePage> {
             borderRadius: const BorderRadius.all(Radius.circular(5)),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                  color: Colors.green.withAlpha(100),
+                  color: firstColor,
                   offset: const Offset(2, 4),
                   blurRadius: 8,
                   spreadRadius: 2)
@@ -148,45 +148,59 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 
+  Color firstColor = Color(0xff494C9E);
+  Color secondColor = Color(0xff31347C);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.grey.shade200,
-                    offset: const Offset(2, 4),
-                    blurRadius: 5,
-                    spreadRadius: 2)
-              ],
-              gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.greenAccent, Colors.green])),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _title(),
-              const SizedBox(
-                height: 80,
-              ),
-              _submitButton(),
-              const SizedBox(
+      body: Consumer<LocalAuthenticationService>(
+        builder: (context, provider, child) => Stack(
+          children: [
+            if (provider.loading)
+              Container(
                 height: 20,
+                width: 40,
+                color: Colors.red,
+                // child: CircularProgressIndicator(),
               ),
-              _signUpButton(),
-              const SizedBox(
-                height: 20,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(5)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.grey.shade200,
+                        offset: const Offset(2, 4),
+                        blurRadius: 5,
+                        spreadRadius: 2)
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [firstColor, secondColor])),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _title(),
+                  const SizedBox(
+                    height: 80,
+                  ),
+                  _submitButton(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  _signUpButton(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  _label()
+                ],
               ),
-              _label()
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

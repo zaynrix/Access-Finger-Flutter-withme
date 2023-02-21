@@ -8,8 +8,11 @@ class LocalAuthenticationService extends ChangeNotifier {
   final _auth = LocalAuthentication();
 
   bool isAuthenticated = false;
+  bool loading = false;
 
   Future<void> authenticate(context) async {
+    loading = true;
+    notifyListeners();
     try {
       isAuthenticated = await _auth.authenticate(
         localizedReason: 'authenticate to access',
@@ -18,10 +21,16 @@ class LocalAuthenticationService extends ChangeNotifier {
           stickyAuth: true,
         ),
       );
-      notifyListeners();
+
       if (isAuthenticated == true) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DoneScreen()));
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => DoneScreen()));
+        });
+        loading = false;
+        notifyListeners();
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => DoneScreen()));
       }
     } on PlatformException catch (e) {
       print(e);
