@@ -60,7 +60,3 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
