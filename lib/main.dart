@@ -201,9 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            // ),
-            // if (provider.loading)
-
             // !provider.loading
             //     ?
             // Container(
