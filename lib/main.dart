@@ -202,11 +202,6 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             )
             //       ),
-            //       _submitButton(),
-            //       const SizedBox(
-            //         height: 20,
-            //       ),
-            //       _signUpButton(),
             //       const SizedBox(
             //         height: 20,
             //       ),
