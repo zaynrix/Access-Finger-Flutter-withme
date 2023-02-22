@@ -1,5 +1,7 @@
+import 'package:accesswithfinger/localAuthinticationsService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class DoneScreen extends StatelessWidget {
   DoneScreen({Key? key}) : super(key: key);
@@ -7,14 +9,14 @@ class DoneScreen extends StatelessWidget {
   Color firstColor = Color(0xff494C9E);
   Color secondColor = Color(0xff31347C);
 
-  Widget _label() {
+  Widget _label(bool isPassed) {
     return Container(
         margin: const EdgeInsets.only(top: 40, bottom: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Your touch ID ready to use',
+              isPassed ? 'Your touch ID ready to use' : "Your touch ID INVALID",
               style: GoogleFonts.portLligatSans(
                 // textStyle:
                 fontSize: 18,
@@ -30,7 +32,7 @@ class DoneScreen extends StatelessWidget {
               height: 20,
             ),
             Text(
-              '100%',
+              isPassed ? '100%' : "0%",
               style: GoogleFonts.portLligatSans(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -68,23 +70,20 @@ class DoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [firstColor, secondColor],
+      body: Consumer<LocalAuthenticationService>(
+        builder: (context, value, child) => Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [firstColor, secondColor],
+            ),
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _label()
-
-              // Text("Your touch ID ready to use "),
-              // Text("Done"),
-            ],
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [_label(value.isAuthenticated)],
+            ),
           ),
         ),
       ),
