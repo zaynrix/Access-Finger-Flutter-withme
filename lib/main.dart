@@ -201,11 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //           end: Alignment.bottomCenter,
-            //           colors: [firstColor, secondColor])),
-            //   child: Column(
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     mainAxisAlignment: MainAxisAlignment.center,
             //     children: <Widget>[
             //       _title(),
             //       const SizedBox(
