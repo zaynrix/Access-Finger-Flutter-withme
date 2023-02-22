@@ -201,9 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            // const Opacity(
-            //   opacity: 0.8,
-            //   child: ModalBarrier(dismissible: false, color: Colors.black),
             // ),
             // if (provider.loading)
 
