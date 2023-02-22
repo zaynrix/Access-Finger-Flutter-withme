@@ -201,9 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //   )
-            // Center(child: Container(color: Colors.red, child: _label())),
-            // if (provider.loading)
             // const Opacity(
             //   opacity: 0.8,
             //   child: ModalBarrier(dismissible: false, color: Colors.black),
