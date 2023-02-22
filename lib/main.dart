@@ -157,27 +157,26 @@ class _WelcomePageState extends State<WelcomePage> {
       body: Consumer<LocalAuthenticationService>(
         builder: (context, provider, child) => Stack(
           children: [
-           Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                              color: Colors.grey.shade200,
-                              offset: const Offset(2, 4),
-                              blurRadius: 5,
-                              spreadRadius: 2)
-                        ],
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [firstColor, secondColor])),
-                    child: Stack(
-                      children: [
-                        !provider.loading
-                            ?  Column(
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(5)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.grey.shade200,
+                        offset: const Offset(2, 4),
+                        blurRadius: 5,
+                        spreadRadius: 2)
+                  ],
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [firstColor, secondColor])),
+              child: Stack(
+                children: [
+                  !provider.loading
+                      ? Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -195,28 +194,21 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                             _label()
                           ],
-                        ):
-                        Center(
+                        )
+                      : Center(
                           child: CircularProgressIndicator(),
                         ),
-                      ],
-                    ),
-                  )
-                // : Center(
-                //     child: Container(
-                //         child: CircularProgressIndicator(
-                //           color: Colors.red,
-                //         ),
-                //         width: 32,
-                //         height: 32),
-                //   )
-                // Center(child: Container(color: Colors.red, child: _label())),
-                // if (provider.loading)
-                // const Opacity(
-                //   opacity: 0.8,
-                //   child: ModalBarrier(dismissible: false, color: Colors.black),
-                // ),
-                // if (provider.loading)
+                ],
+              ),
+            )
+            //   )
+            // Center(child: Container(color: Colors.red, child: _label())),
+            // if (provider.loading)
+            // const Opacity(
+            //   opacity: 0.8,
+            //   child: ModalBarrier(dismissible: false, color: Colors.black),
+            // ),
+            // if (provider.loading)
 
             // !provider.loading
             //     ?
