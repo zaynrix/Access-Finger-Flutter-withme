@@ -201,10 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //             spreadRadius: 2)
-            //       ],
-            //       gradient: LinearGradient(
-            //           begin: Alignment.topCenter,
             //           end: Alignment.bottomCenter,
             //           colors: [firstColor, secondColor])),
             //   child: Column(
