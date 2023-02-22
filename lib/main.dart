@@ -201,14 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            // : Center(
-            //     child: Container(
-            //         child: CircularProgressIndicator(
-            //           color: Colors.red,
-            //         ),
-            //         width: 32,
-            //         height: 32),
-            //   )
             // : Center(child: Text("")),
           ],
         ),
