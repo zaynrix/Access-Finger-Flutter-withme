@@ -201,10 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            // !provider.loading
-            //     ?
-            // Container(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20),
             //   height: MediaQuery.of(context).size.height,
             //   decoration: BoxDecoration(
             //       borderRadius: const BorderRadius.all(Radius.circular(5)),
