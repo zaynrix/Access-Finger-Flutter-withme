@@ -11,8 +11,6 @@ class LocalAuthenticationService extends ChangeNotifier {
   bool loading = false;
 
   Future<void> authenticate(context) async {
-    loading = true;
-    notifyListeners();
     try {
       isAuthenticated = await _auth.authenticate(
         localizedReason: 'authenticate to access',
@@ -23,12 +21,15 @@ class LocalAuthenticationService extends ChangeNotifier {
       );
 
       if (isAuthenticated == true) {
+        loading = true;
+        notifyListeners();
         Future.delayed(Duration(seconds: 3), () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => DoneScreen()));
+          loading = false;
+          notifyListeners();
         });
-        loading = false;
-        notifyListeners();
+
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => DoneScreen()));
       }
