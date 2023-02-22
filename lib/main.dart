@@ -201,7 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            // : Center(child: Text("")),
           ],
         ),
       ),
