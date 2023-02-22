@@ -201,10 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //     children: <Widget>[
-            //       _title(),
-            //       const SizedBox(
-            //         height: 80,
             //       ),
             //       _submitButton(),
             //       const SizedBox(
