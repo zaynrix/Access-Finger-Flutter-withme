@@ -201,11 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //       boxShadow: <BoxShadow>[
-            //         BoxShadow(
-            //             color: Colors.grey.shade200,
-            //             offset: const Offset(2, 4),
-            //             blurRadius: 5,
             //             spreadRadius: 2)
             //       ],
             //       gradient: LinearGradient(
