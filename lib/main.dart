@@ -201,10 +201,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
             )
-            //       ),
-            //       const SizedBox(
-            //         height: 20,
-            //       ),
             //       _label()
             //     ],
             //   ),
