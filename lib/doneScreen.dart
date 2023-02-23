@@ -27,7 +27,8 @@ class DoneScreen extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-            const Icon(Icons.fingerprint, size: 120, color: Color(0xff39EEBB)),
+            Icon(Icons.fingerprint,
+                size: 120, color: isPassed ? Color(0xff39EEBB) : Colors.grey),
             const SizedBox(
               height: 20,
             ),
@@ -43,11 +44,11 @@ class DoneScreen extends StatelessWidget {
               height: 20,
             ),
             Text(
-              'Scanning Completed',
+              isPassed ? 'Scanning Completed' : "Not Completed",
               style: GoogleFonts.portLligatSans(
                 // textStyle:
                 fontSize: 18,
-                fontWeight: FontWeight.w500,
+                fontWeight: isPassed ? FontWeight.w500 : FontWeight.normal,
                 color: Colors.white70,
               ),
             ),
