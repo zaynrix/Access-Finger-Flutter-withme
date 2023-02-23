@@ -9,7 +9,7 @@ class LocalAuthenticationService extends ChangeNotifier {
 
   bool isAuthenticated = false;
   bool loading = false;
-
+  //
   Future<void> authenticate(context) async {
     try {
       isAuthenticated = await _auth.authenticate(
