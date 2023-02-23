@@ -29,6 +29,16 @@ class LocalAuthenticationService extends ChangeNotifier {
           loading = false;
           notifyListeners();
         });
+      } else {
+        isAuthenticated = false;
+        notifyListeners();
+        loading = true;
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => DoneScreen()));
+          loading = false;
+          notifyListeners();
+        });
       }
     } on PlatformException catch (e) {
       print(e);

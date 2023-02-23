@@ -9,65 +9,6 @@ class DoneScreen extends StatelessWidget {
   Color firstColor = Color(0xff494C9E);
   Color secondColor = Color(0xff31347C);
 
-  Widget _label(bool isPassed) {
-    return Container(
-        margin: const EdgeInsets.only(top: 40, bottom: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              isPassed ? 'Your touch ID ready to use' : "Your touch ID INVALID",
-              style: GoogleFonts.portLligatSans(
-                // textStyle:
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: Colors.white70,
-              ),
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            Icon(Icons.fingerprint,
-                size: 120, color: isPassed ? Color(0xff39EEBB) : Colors.grey),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              isPassed ? '100%' : "0%",
-              style: GoogleFonts.portLligatSans(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              isPassed ? 'Scanning Completed' : "Not Completed",
-              style: GoogleFonts.portLligatSans(
-                // textStyle:
-                fontSize: 18,
-                fontWeight: isPassed ? FontWeight.w500 : FontWeight.normal,
-                color: Colors.white70,
-              ),
-            ),
-            // InkWell(
-            //   onTap: () {},
-            //   // } _localAuth.authenticate(context),
-            //   child: const Text(
-            //     'Check Touch ID',
-            //     style: TextStyle(
-            //       color: Colors.white,
-            //       fontSize: 15,
-            //       decoration: TextDecoration.underline,
-            //     ),
-            //   ),
-            // ),
-          ],
-        ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +24,61 @@ class DoneScreen extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [_label(value.isAuthenticated)],
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(top: 40, bottom: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          value.isAuthenticated
+                              ? 'Your touch ID ready to use'
+                              : "Your touch ID INVALID",
+                          style: GoogleFonts.portLligatSans(
+                            // textStyle:
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 60,
+                        ),
+                        Icon(Icons.fingerprint,
+                            size: 120,
+                            color: value.isAuthenticated
+                                ? Color(0xff39EEBB)
+                                : Colors.grey),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          value.isAuthenticated ? '100%' : "0%",
+                          style: GoogleFonts.portLligatSans(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          value.isAuthenticated
+                              ? 'Scanning Completed'
+                              : "Not Completed",
+                          style: GoogleFonts.portLligatSans(
+                            // textStyle:
+                            fontSize: 18,
+                            fontWeight: value.isAuthenticated
+                                ? FontWeight.w500
+                                : FontWeight.normal,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ],
+                    ))
+              ],
             ),
           ),
         ),
