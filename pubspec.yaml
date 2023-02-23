@@ -41,11 +41,17 @@ dependencies:
   google_fonts: ^4.0.3
   rename: ^2.1.1
   flutter_launcher_icons:
-
+  flutter_native_splash:
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
+flutter_native_splash:
+  color: "#494C9E"
+  image: assets/images/logo.png
+  android: true
+  ios: true
 flutter_icons:
   android: true
   ios: true
